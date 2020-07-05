@@ -1,0 +1,58 @@
+<?php
+use core\helper\SessionHelper; 
+
+use config\SystemConfig;
+?>
+
+
+<style>
+
+.select{
+/* display:none; */
+
+}
+
+</style>
+
+
+<div class="navbar-collapse collapse" id="navbar-collapse" aria-expanded="true" style="">
+                  
+<div class='infoExercicio'>
+        <div class="navbar-collapse collapse" id="navbar-collapse" aria-expanded="true" style="">
+            <!-- Combo Exercicio acesso -->
+            <?php   
+            // echo '11111111111111111111111';
+            // echo SessionHelper::getSessionValue('segExercicio');
+
+            if(!empty(SessionHelper::getSessionValue('arrayExercicio'))){
+
+                $arrayExercicio = SessionHelper::getSessionValue('arrayExercicio');
+                $segExercicio = SessionHelper::getSessionValue('segExercicio');  
+                if(!empty(SessionHelper::getSessionValue('segExercicio'))){
+                ?>
+
+            <div class="row cboacesso m-b-15">
+                <div class="select">
+                    <label for="ID_EXERCICIO" class="col-white m-t-5" >Exercício:</label>
+                    <div class="form-group m-b-0">
+                        <div class="form-line ">
+                        <select id="ID_EXERCICIO" name="ID_EXERCICIO" class="selectpicker form-control select" data-live-search = "true" style="display: none;">
+                        <?php
+                                 $this->makeOptions($arrayExercicio, 'Id', 'Descricao', null,  $segExercicio);
+                                 ?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+             <?php }}?>
+            </div>
+
+
+      
+        </div>
+    </div>              
+        
+</div>
+
+
+  <?php 

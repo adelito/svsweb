@@ -1,0 +1,78 @@
+
+DOCUMENTACAO:
+ 
+Básico:
+
+ $('SELETOR')    
+        .secValidate({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                NAME_CAMPO: { 
+                    validators: {
+                        notEmpty: {
+                            message: 'Campo não pode ser vazio'
+                        }
+                    }
+                },
+                ID_CAMPO_1: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Campo não pode ser vazio'
+                        }
+                    }
+                },                
+
+                ID_CAMPO_2: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Campo não pode ser vazio'
+                            },
+                            callback: {
+                                callback: function (value, validator, $field) {
+                                    //verifica o valor informado
+                                    retorno = {valid: true};
+
+                                    if (value.length && !suaFuncao(value)) {
+                                        retorno.valid = false;
+                                        retorno.message = 'Valor incorreto';
+                                    }
+                                    return retorno;
+                                }
+                            }
+                        }
+
+                    }
+            },
+            success:function(){
+                //Coloque seu código aqui, quando o formulário for validado
+            },
+            error:function(){
+                //Coloque seu código aqui, se ocorrer erro na validação de algum campo
+            },
+            onSubmit:function(){
+                //Coloque seu código aqui, quando for submeter o formulario
+                //Somente quando validado
+            },
+            onClick:function(){
+                //Coloque seu código aqui, quando clicar no seletor personalizado
+                //Somente quando validado
+            }
+
+        });
+
+
+
+
+
+ #RESETAR TODOS OS CAMPOS:
+ $('SELETOR').secValidate().resetForm();
+
+
+
+ 
+ #RESETAR UM CAMPO ESPECÍFICO:
+ $('SELETOR').secValidate().resetField('ID_NTE');

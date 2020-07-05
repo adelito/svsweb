@@ -1,0 +1,64 @@
+<style>
+    .bars {
+        display:none !important;
+        }
+    .navbar{
+position: initial;
+float: none;
+
+    }
+
+</style>
+
+<!-- Conteúdo -->
+
+<section class="content">
+
+    <div class="container">
+        <div class="row clearfix">
+            <!-- #INICIO teste -->
+            <!-- Column -->
+            <div class="col-md-offset-2 col-md-8 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2><?php echo $pageTitle; ?></h2>
+                    </div>
+                    <div class="body clearfix ">
+                        <form role="form" action="selecaoExercicio" name="frmSelecionarExercicio" id="frmSelecionarExercicio" method="post">
+
+                            <h4 class="card-title m-t-10 "> <strong><?php// echo $usuNome; ?></strong></h4>
+
+                            <div class="row  col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                            </div>  
+                            <div class=" col-md-offset-4 col-md-4 col-sm-12 col-xs-12  ">
+                                <label for="EXERCICIO" class="m-t-5" >Informe o exercício contábil:</label>
+                                <div class="form-group m-b-10">
+                                    <div class="form-line ">
+                            <select id="EXERCICIO" name="EXERCICIO" class="selectpicker form-control select" data-live-search="true"              style="display: none;">
+                                <?php
+                                 $this->makeOptions($arrayExercicio, 'Id', 'Descricao');
+                                ?>
+                            </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class=" col-md-offset-5    col-md-4 col-sm-12 col-xs-12  "> 
+                                <div class=" form-group">
+                                    <a  class="btn bg-green waves-effect border-radius-5 btn-salvar" form-submit>
+                                        <i class="material-icons">save</i>
+                                        <span class="">Acessar</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <br>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+<!-- #FIM Conteúdo -->

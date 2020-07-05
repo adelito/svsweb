@@ -1,0 +1,19 @@
+<?php
+use core\helper\SessionHelper;
+
+//header('X-XSS-Protection: 1; mode=block');
+
+SessionHelper::generateSessionName();
+SessionHelper::startSession();
+
+# Validação de usuário logado
+if(empty(SessionHelper::getSessionName('usuNome')) ||  empty(SessionHelper::getSessionValue('usuLogin'))){
+    header('location:'.$systemConfig::SYSTEM_ROOT.'/logout');
+}
+
+# Validação de session name
+if(SessionHelper::getSessionName() != md5('SEGSEC'.$systemConfig::CHAVE_APLICACAO . $_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT'])){  
+  header('location:'.$systemConfig::SYSTEM_ROOT.'/logout');
+} 
+
+?>

@@ -1,0 +1,16 @@
+/* 
+    Created on : 29/06/2018, 14:04:45
+    Author     : jjjunior
+*/
+
+.dropdown-menu > li > a {
+    padding: 7px 18px;
+    color: #666;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    font-size: 14px;
+    line-height: 25px;
+    width: 165px;
+}

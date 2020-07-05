@@ -1,0 +1,128 @@
+<?php
+
+use config\SystemConfig;
+use module\siapp\consts\PerfilConsts;
+?>
+<!-- Custom Css -->
+<link href="<?php echo $systemConfig::URL_CORE_CSS ?>/style.css" rel="stylesheet">
+
+<!-- login -->
+<!--<link href="<?php echo $systemConfig::URL_PUBLIC ?>/sistema/login/css/login.css" rel="stylesheet" />-->
+<style>
+.bootstrap-select .dropdown-toggle.bs-placeholder {
+    padding: 4px!important;
+}
+</style>
+
+
+</head>
+
+<body class="login-page clearfix">
+    <div id="particles-js"></div>
+
+    <div class="login-box clearfix container">
+
+        <div class="card">
+            <div class="header">
+                <div class="logo-img"><img src="<?php echo $systemConfig::URL_PUBLIC ?>/all/logo/logo-dark.png" alt="SEC" /></div>
+
+                <div class="logo">
+                    <a><?php echo $systemConfig::SYSTEM_NAME_FORMATED; ?></a>
+                    <small><?php echo $systemConfig::SYSTEM_DESCRICAO; ?> </small>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="body clearfix">
+
+                <div class="col-md-12">
+                    <form  id="frmLogin" name="frmRecuperarSenha" method="post" action="<?php echo $systemConfig::SYSTEM_ROOT; ?>/inicio">
+                        <h4>Recuperação de Senha</h4>
+                        <br />
+                        <div class="row p-t-5">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group form-control-without-padding form-float">
+                                    <div class="form-line" style="">
+                                        <select id="IDPERFIL" name="ID_PERFILS"  class="selectpicker form-control select" data-live-search="false" style="display: none; padding:10px; " >
+                                            <?php $this->makeOptions(PerfilConsts::getValuesCadastro(), null, null, TRUE, $this->returnIfExist($post['ID_USUARIO_PERFIL'])); ?>
+                                        </select>
+                                        <label class="form-label label-focused-fix" for="IDPERFIL" >Perfil:</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group form-float ">
+                                    <div class="form-line">
+                                        <input type="text" id="CPF" name="CPF"  class="form-control" maxlength="14">
+                                        <label for="CPF" class="form-label label-focused-fix" >CPF:</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12 divProf">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input  type="email" name="EMAIL" class="form-control inputsProf" id="EMAIL"  maxlength="80">
+                                        <label class="form-label label-focused-fix" for="EMAIL" >E-mail:</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                        </div>
+
+                        <div class="row divProf">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <div class="form-line ">
+                                        <input  type="text" name="CADASTRO" class="form-control inputsProf" id="CADASTRO"  maxlength="100">
+                                        <label class="form-label label-focused-fix" for="CADASTRO" >Cadastro:</label>                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <div class="form-line ">
+                                        <input type="text" id="DATA_NASCIMENTO" name="DATA_NASCIMENTO"  class="form-control inputsProf" maxlength="10">
+                                        <label class="form-label label-focused-fix" for="DATA_NASCIMENTO" >Data de Nascimento:</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row divProf">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <div class="form-line ">
+                                        <input type="password" id="senha" name="frmNovaSenha" maxlength="32" class="form-control inputsProf">
+                                        <label class="form-label label-focused-fix" for="SENHA" >Senha:</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <div class="form-line ">
+                                        <input type="password" id="CONFIRMARSENHA" name="frmConfNovaSenha" maxlength="32" class="form-control inputsProf">
+                                        <label class="form-label label-focused-fix" for="CONFIRMARSENHA" >Repetir Senha:</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row p-t-45">
+                            <div class="col-md-6 col-md-offset-3">
+                                <div class="col-md-6" style="padding: 0px;">
+                                    <button class="btn btn-blocks bg-primary waves-effect btn-block" type="submit" style="border-radius:3px 0px 0px 3px !important;">Enviar</button>
+                                </div>
+                                <div class="col-md-6" style="padding: 0px;">
+                                    <a href="/login" class="btn btn-blocks bg-orange waves-effect btn-block" type="back" style="border-radius: 0px 3px 3px 0px !important">Voltar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div> <!-- md-6 -->
+            </div>
+            <hr style='margin:0px'/>
+        </div>
+    </div>
+

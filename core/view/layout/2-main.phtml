@@ -1,0 +1,40 @@
+<?php
+$lsclosed = \config\SystemConfig::LS_CLOSED;
+$colorTheme = \config\SystemConfig::FRAMEWORK_COLOR_THEME;
+?>
+<?php if ($lsclosed) { ?>
+    <style>
+        .navbar-brand{
+            margin-left: 20px!important;   
+        }
+        .bars{
+            display: block!important;
+        }
+        .breadcrumb.system {
+            margin: 84px 15px 0 13px!important;
+        }
+    <?php } ?>
+</style>
+<body class="<?php echo $colorTheme; ?> <?php echo $lsclosed ? 'ls-closed' : ''; ?>">
+    <input type="hidden" id="lsclosed" value="<?php echo $lsclosed ? 1 : 0; ?>">
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Carregando...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->

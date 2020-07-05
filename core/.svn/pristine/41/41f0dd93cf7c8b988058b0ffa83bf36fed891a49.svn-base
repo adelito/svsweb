@@ -1,0 +1,16 @@
+body class="body-404"> 
+    <div class="error-header">  
+        <img src="assets/img/logos/governo.png"></div>
+    <div class="container ">
+        <section class="error-container text-center">
+            <h1><?php echo $codigo; ?></h1>
+            <div class="error-divider">
+                <h2><?php echo $titulo; ?></h2><br>
+                <p class="description"><?php echo $descricao; ?></p>
+            </div>
+            <?php if(isset($controlador)){ ?><p class="description">"<strong><?php echo $controlador; ?></strong>"</p> <?php } ?>
+            <br>
+            <a href="login" class="return-btn"><i class="fa fa-home"></i>Início</a>
+        </section>
+    </div>
+</body>

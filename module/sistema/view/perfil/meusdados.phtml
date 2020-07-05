@@ -1,0 +1,62 @@
+<!-- Conteúdo -->
+<section class="content">
+    <div class="rowX clearfixX">
+        <!-- #INICIO teste -->
+        <!-- Column -->
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h4>
+                Perfil
+            </h4>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="body">
+                    <center class="m-t-30"> 
+                        <form class="form" action="/perfil/uploadImage" method="post" enctype="multipart/form-data">
+
+                            <div class="kv-avatar">
+                                <div class="file-loading">
+                                    <input id="fotoperfil" name="fotoperfil" type="file" required>
+                                </div>
+                            </div>
+                        </form>
+                        <div id="kv-avatar-errors-2" class="center-block" style="width:800px;display:none"></div>
+
+                        <h4 class="card-title m-t-10">
+                            <?php echo $sessionHelper::getSessionValue('usuNome'); ?>
+                        </h4>
+                        <h5><?php echo $sessionHelper::getSessionValue('usuEmail'); ?></h5>    
+                        <h5><?php echo $sessionHelper::getSessionValue('segPerfilDescricao'); ?></h5>    
+                    </center>
+                </div>
+                <div>
+                    <hr> </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+<div class="modal-foto-perfil no-display">
+    <div class="interno">
+
+    </div>
+</div>
+
+
+<div class="no-display" id="imgPreview">
+    <?php
+    $fotoPerfil = $systemConfig::URL_PUBLIC.'/all/perfil/exemplo.jpg';
+        if( $sessionHelper::getSessionValue('usuFotoPerfil') != null){
+            $caminhoFotoAbsoluto = $systemConfig::UPLOAD_DIR_SERVER().'perfil/'.$sessionHelper::getSessionValue('usuFotoPerfil');
+            if(file_exists($caminhoFotoAbsoluto)){
+                $fotoPerfil = $systemConfig::UPLOAD_DIR().'perfil/'.$sessionHelper::getSessionValue('usuFotoPerfil').'?cod='.time();
+            }
+
+        }
+    ?>
+    <img src="<?php echo $fotoPerfil; ?>" width="200" alt="Sua foto"><h6 class="text-muted">Clique para alterar</h6>
+</div>
+<!-- #FIM Conteúdo -->

@@ -1,0 +1,51 @@
+
+body{
+    background-color: #FFF!important;
+}
+.template-1-logo-gov{
+    height: 80px;
+}
+.template-1-logo-app{
+    height: 80px;
+}
+
+.template-1-container {
+    margin: 0 auto;
+    margin-bottom: 46px;
+    margin-top: 35px;
+}
+
+.template-1-conteudo {
+    margin: 0 auto;
+    margin-bottom: 34px;
+}
+
+.template-1-rodape {
+    margin-top: 20px;
+}
+
+.template-1-rodape  hr{
+    border-top-color: #000;
+}
+
+.bt-print-float {
+    padding: 5px 20px;
+    position: fixed;
+    bottom: 10px;
+    background: #fff;
+    left: 50%;
+    margin-left: -150px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+@media print{
+
+    .bt-print-float{
+        display:none;
+    }   
+    .template-1-container {
+        margin-bottom: 0px!important;
+    }
+
+}
+

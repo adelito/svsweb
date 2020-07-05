@@ -1,0 +1,8 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_URI} !\.(css|gif|ico|jpg|js|png|swf|txt|woff|ttf|woff2|phtml)$
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^(.*)$ requisicao.php [L]
+

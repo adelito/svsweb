@@ -1,0 +1,39 @@
+$(document).ready(function () {
+
+    $('label').append('<sup class="col-red">*</sup>');
+    createAndRefreshDataTable(1);
+
+    $('.pg-adicionar form,.pg-alterar form')
+        .bootstrapValidator({
+            message: 'O valor informado não é válido!',
+            // live: 'submitted',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                DESCRICAO: {
+                    validators: {
+                        notEmpty: {
+                            message: SYSTEM_MSG.MSG1
+                        }
+                    }
+                }
+            }
+        })
+        .on('success.form.bv', function (e) {
+            $('.btn-salvar').attr('disabled', 'disabled');
+            e.preventDefault();
+            var $form = $(e.target);
+            var metodo = $form.attr('href');
+            $.post(metodo, $form.serialize(), function (data) {
+                modalAlert(data, $form);
+                $('html').click(function () {
+                    $('.showSweetAlert').addClass('visible');
+                })
+            });
+        });
+
+
+});

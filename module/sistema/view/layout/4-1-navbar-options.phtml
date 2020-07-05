@@ -1,0 +1,235 @@
+<?php
+
+use core\helper\SessionHelper;
+
+$perfil = SessionHelper::getSessionValue('segPerfil');
+
+$permisaoAcesso = new core\helper\PermissaoAcessoHelper();
+$arrayPermissoes = SessionHelper::getSessionValue('segPermissoes');
+
+//1	LÍDER
+//2	DONO DO PRODUTO
+//3	DESENVOLVEDOR
+//4	TESTE
+//5	ADMINISTRADOR DE DAD
+
+
+// if ($perfil == 1 || $perfil == 2 || $perfil == 6) {
+
+//     $arrayPermissoes['produto']['inicio'] = 1;
+//     $arrayPermissoes['ticket']['movimentacaoticket'] = 1;
+//     $arrayPermissoes['ocorrencia']['inicio'] = 1;
+//     $arrayPermissoes['imprimir']['inicio'] = 1;
+//     $arrayPermissoes['relatorio']['inicio'] = 1;
+//     $arrayPermissoes['ticket']['gerenciarticketdoproduto'] = 1;
+//     $arrayPermissoes['sprint']['gerenciarsprintdoproduto'] = 1;
+//     $arrayPermissoes['usuario']['gerenciartimedoproduto'] = 1;
+// } else if ($perfil == 4) {
+
+//     $arrayPermissoes['produto']['inicio'] = 1;
+//     $arrayPermissoes['ticket']['movimentacaoticket'] = 1;
+//     $arrayPermissoes['relatorio']['inicio'] = 1;
+//     $arrayPermissoes['ticket']['gerenciarticketdoproduto'] = 1;
+//     $arrayPermissoes['sprint']['gerenciarsprintdoproduto'] = 1;
+// } else {
+//     $arrayPermissoes['produto']['inicio'] = 1;
+//     $arrayPermissoes['ticket']['movimentacaoticket'] = 1;
+//     $arrayPermissoes['ticket']['gerenciarticketdoproduto'] = 1;
+//     $arrayPermissoes['menu']['subtipodespesa'] = 1;
+//     $arrayPermissoes['subtipodespesa']['inicio'] = 1;
+//     $arrayPermissoes['tipodespesa']['inicio'] = 1;
+//     $arrayPermissoes['exercicio']['inicio'] = 1;
+//     $arrayPermissoes['unidademedida']['inicio'] = 1;
+
+//     $arrayPermissoes['perfil']['meusdados'] = 1;
+//     $arrayPermissoes['perfil']['alterarSenha'] = 1;
+// }
+?>
+
+<section>
+    <aside id="leftsidebar" class="sidebar">
+        <!-- User Info -->
+        <div class="user-info">
+        </div>
+        <!-- #User Info -->
+        <!-- Menu -->
+        <div class="menu">
+            <ul class="list">
+                <li class="header">MENU</li>
+
+                <li class="<?php activeMenu('inicio', $menu) ?> inicio">
+                    <a href="<?php echo $systemConfig::SYSTEM_ROOT . '/inicio'; ?>">
+                        <i class="material-icons bg-grey">home</i>
+                        <span>Início</span>
+                    </a>
+                </li>
+
+                <li class="">
+                    <a href="javascript:void(0);" class="menu-toggle <?php toggledMenu(array('perfil'), $menu); ?>">
+                        <i class="material-icons bg-grey">format_list_bulleted</i>
+                        <span>Meu Perfil</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <?php if ($permisaoAcesso->validarPermissao($arrayPermissoes, 'perfil')) {  ?>
+                            <li class="<?php activeMenu('perfil', $menu) ?>">
+                                <a href="<?php echo $systemConfig::SYSTEM_ROOT . '/perfil/meusdados' ?>" class="">
+                                    <span class="submenuespecial">Meus dados</span>
+                                </a>
+                            </li>
+                        <?php }
+                        if ($permisaoAcesso->validarPermissao($arrayPermissoes, 'perfil')) {  ?>
+                            <li class="<?php activeMenu('perfil', $menu) ?>">
+                                <a href="<?php echo $systemConfig::SYSTEM_ROOT . '/perfil/alterarSenha' ?>" class="">
+                                    <span class="submenuespecial">Alterar Senha</span>
+                                </a>
+                            </li>
+                        <?php } ?>
+                        <li class="<?php activeMenu('logout', $menu) ?>">
+                            <a href="<?php echo $systemConfig::SYSTEM_ROOT . '/logout' ?>" class="">
+                                <span class="submenuespecial">Sair do sistema</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <?php if ($permisaoAcesso->validarPermissao($arrayPermissoes, 'menu')) {  ?>
+                    <li class="">
+                        <a href="javascript:void(0);" class="menu-toggle <?php toggledMenu(array('usuario', 'tipodespesa', 'exercicio', 'subtipodespesa', 'unidademedida'), $menu); ?>">
+                            <i class="material-icons bg-grey">format_list_bulleted</i>
+                            <span>Cadastro básico</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <?php if ($permisaoAcesso->validarPermissao($arrayPermissoes, 'exercicio')) {  ?>
+                                <li class="<?php activeMenu('exercicio', $menu) ?>">
+                                    <a href="<?php echo $systemConfig::SYSTEM_ROOT . '/exercicio' ?>" class="">
+                                        <span class="submenuespecial">Exercício</span>
+                                    </a>
+                                </li>
+                            <?php }
+                            if ($permisaoAcesso->validarPermissao($arrayPermissoes, 'tipodespesa')) {  ?>
+                                <li class="<?php activeMenu('tipodespesa', $menu) ?>">
+                                    <a href="<?php echo $systemConfig::SYSTEM_ROOT . '/tipodespesa' ?>" class="">
+                                        <span class="submenuespecial">Tipo Despesa</span>
+                                    </a>
+                                </li>
+                            <?php }
+                            if ($permisaoAcesso->validarPermissao($arrayPermissoes, 'subtipodespesa')) { ?>
+                                <li class="<?php activeMenu('subtipodespesa', $menu) ?>">
+                                    <a href="<?php echo $systemConfig::SYSTEM_ROOT . '/subtipodespesa' ?>" class="">
+                                        <span class="submenuespecial">Subtipo Despesa</span>
+                                    </a>
+                                </li>
+                            <?php }
+                            if ($permisaoAcesso->validarPermissao($arrayPermissoes, 'unidademedida')) {  ?>
+                                <li class="<?php activeMenu('unidademedida', $menu) ?>">
+                                    <a href="<?php echo $systemConfig::SYSTEM_ROOT . '/unidademedida' ?>" class="">
+                                        <span class="submenuespecial">Unidade Medida</span>
+                                    </a>
+                                </li>
+                            <?php }
+                            if ($permisaoAcesso->validarPermissao($arrayPermissoes, 'usuario')) {  ?>
+                                <li class="<?php activeMenu('usuario', $menu) ?>">
+                                    <a href="<?php echo $systemConfig::SYSTEM_ROOT . '/usuario' ?>" class="">
+                                        <span class="submenuespecial">Usuário</span>
+                                    </a>
+                                </li>
+                            <?php } ?>
+                        </ul>
+                    </li>
+                <?php  }  ?>
+                <li class="">
+                    <a href="javascript:void(0);" class="menu-toggle <?php toggledMenu(array('relatorio'), $menu); ?>">
+                        <i class="material-icons bg-grey">format_list_bulleted</i>
+                        <span>Relatório</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <?php if ($permisaoAcesso->validarPermissao($arrayPermissoes, 'relatorio')) {  ?>
+                            <li class="<?php activeMenu('relatorio', $menu) ?>">
+                                <a href="<?php echo $systemConfig::SYSTEM_ROOT . '/relatorio/dotacao' ?>" class="">
+                                    <span class="submenuespecial">Saldo de Dotação</span>
+                                </a>
+                            </li>
+                        <?php } 
+                        if ($permisaoAcesso->validarPermissao($arrayPermissoes, 'relatorio')) {  ?>
+                            <li class="<?php activeMenu('relatorio', $menu) ?>">
+                                <a href="<?php echo $systemConfig::SYSTEM_ROOT . '/relatorio/despesa' ?>" class="">
+                                    <span class="submenuespecial">Despesas</span>
+                                </a>
+                            </li>
+                        <?php } 
+                        if ($permisaoAcesso->validarPermissao($arrayPermissoes, 'relatorio')) {  ?>
+                            <li class="<?php activeMenu('relatorio', $menu) ?>">
+                                <a href="<?php echo $systemConfig::SYSTEM_ROOT . '/relatorio/concessao' ?>" class="">
+                                    <span class="submenuespecial">Concessão</span>
+                                </a>
+                            </li>
+                        <?php } ?>
+                        <?php if ($permisaoAcesso->validarPermissao($arrayPermissoes, 'relatorio')) {  ?>
+                        <li class="<?php activeMenu('relatorio', $menu) ?>">
+                                <a href="<?php echo $systemConfig::SYSTEM_ROOT . '/relatorio/orcamentacao' ?>" class="">
+                                    <span class="submenuespecial">Orçamentação</span>
+                                </a>
+                            </li>
+                        <?php } ?>
+                    </ul>
+               
+                </li>
+
+                <?php if ($permisaoAcesso->validarPermissao($arrayPermissoes, 'orcamento', 'inicio')) { ?>
+                    <li class="<?php activeMenu('orcamento', $menu) ?>">
+                        <a href="<?php echo $systemConfig::SYSTEM_ROOT . '/orcamento' ?>" class="">
+                            <i class="material-icons bg-orange">attach_money</i>
+                            <span>Orçamento</span>
+                        </a>
+                    </li>
+                <?php }
+                if ($permisaoAcesso->validarPermissao($arrayPermissoes, 'despesa', 'inicio')) { ?>
+                    <li class="<?php activeMenu('despesa', $menu) ?>">
+                        <a href="<?php echo $systemConfig::SYSTEM_ROOT . '/despesa' ?>" class="">
+                            <i class="material-icons bg-orange">attach_money</i>
+                            <span>Despesa</span>
+                        </a>
+                    </li>
+                <?php }
+                if ($permisaoAcesso->validarPermissao($arrayPermissoes, 'orcamentacao', 'inicio')) { ?>
+                    <li class="<?php activeMenu('orcamentacao', $menu) ?>">
+                        <a href="<?php echo $systemConfig::SYSTEM_ROOT . '/orcamentacao' ?>" class="">
+                            <i class="material-icons bg-orange">attach_money</i>
+                            <span>Orçamentação</span>
+                        </a>
+                    </li>
+                <?php }
+                if ($permisaoAcesso->validarPermissao($arrayPermissoes, 'concessao', 'inicio')) { ?>
+                    <li class="<?php activeMenu('concessao', $menu) ?>">
+                        <a href="<?php echo $systemConfig::SYSTEM_ROOT . '/concessao' ?>" class="">
+                            <i class="material-icons bg-orange">attach_money</i>
+                            <span>Concessão</span>
+                        </a>
+                    </li>
+                <?php }
+                if ($permisaoAcesso->validarPermissao($arrayPermissoes, 'ocorrencia', 'inicio')) { ?>
+                    <li class="<?php activeMenu('ocorrencia', $menu) ?>">
+                        <a href="<?php echo $systemConfig::SYSTEM_ROOT . '/ocorrencia' ?>" class="">
+                            <i class="material-icons  bg-red">feedback</i>
+                            <span>Ocorrência</span>
+                        </a>
+                    </li>
+                <?php } ?>
+            </ul>
+        </div>
+    </aside>
+</section>
+
+
+<div class="m-l-15 m-r-15 m-b-15">
+    <ol class="breadcrumb system">
+        <li><a href="javascript:void(0);">Início</a></li>
+        <?php foreach ($textBreadcrumb as $tbc) { ?>
+            <li><a href="javascript:void(0);"><?php echo $tbc; ?></a></li>
+        <?php } ?>
+        <!--<li class="active">Dados</li>-->
+    </ol>
+</div>
+<!-- # Breadcrumb -->
+
+<input type="hidden" id="system-url" value="<?php echo $systemConfig::SYSTEM_ROOT ?>">

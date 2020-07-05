@@ -1,0 +1,31 @@
+
+@media print {
+    .botao {
+        display: none;
+    }
+    .container {
+        width: 100%!important;
+    }
+    .andamento table td{
+        border: none!important;
+    }
+
+    .table-bordered tbody tr td, .table-bordered tbody tr th {
+        padding-bottom: 3px!important;
+        padding-top: 3px!important;;
+    }
+
+    .no-colorprint .badge{
+        background-color: #fff !important;
+        color: #000 !important;
+    }
+    
+}
+
+
+table.table-bordered tbody tr td {
+    font-size: 12px!important;  
+}
+
+
+

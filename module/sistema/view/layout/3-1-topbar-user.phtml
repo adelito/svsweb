@@ -1,0 +1,43 @@
+<?php
+$fotoPerfil = $systemConfig::URL_PUBLIC . '/all/perfil/exemplo.jpg';
+if ($sessionHelper::getSessionValue('usuFotoPerfil') != null) {
+    $caminhoFotoAbsoluto = $systemConfig::UPLOAD_DIR_SERVER() . 'perfil/' . $sessionHelper::getSessionValue('usuFotoPerfil');
+    if (file_exists($caminhoFotoAbsoluto)) {
+        $fotoPerfil = $systemConfig::UPLOAD_DIR() . 'perfil/' . $sessionHelper::getSessionValue('usuFotoPerfil') . '?cod=' . time();
+    }
+}
+?>
+<div class="dropdown-menu pull-left m-t-5 dadosusuario" >
+    <div class="col-xs-5 p-t-10 fotoBoxPerfil">
+        <img class="foto fotoPerfil" src="<?php echo $fotoPerfil; ?>" width="88" height="88" alt="Usuário">
+
+    </div>
+    <div class="col-xs-7 p-t-15 boxDados">
+        <div>
+            <strong><?php echo $sessionHelper::getSessionValue('usuNome'); ?></strong>
+        </div>
+        <div >
+            <small><?php echo $sessionHelper::getSessionValue('segPerfilDescricao'); ?></small>
+        </div>
+    </div>
+    <div class="col-xs-12 m-t-10 " style="color: #ece3e3;padding-top: 12px;position: relative;border-top: 1px solid;padding-bottom: 7px;">
+        <a  href="<?php echo $systemConfig::SYSTEM_ROOT; ?>/perfil/meusdados" class="waves-effect waves-block">
+            <i class="material-icons">account_box</i>
+            <span style="position: relative;top: -4px;left: 7px;">Meus dados</span>
+        </a>
+    </div>
+    <div class="col-xs-12 p-b-10">
+        <a  href="<?php echo $systemConfig::SYSTEM_ROOT; ?>/perfil/alterarSenha" class="waves-effect waves-block">
+            <i class="material-icons">lock</i>
+            <span style="position: relative;top: -4px;left: 7px;">Alterar Senha</span>
+        </a>
+    </div>
+    <div class="col-xs-12 p-b-10">
+        <a href="<?php echo $systemConfig::SYSTEM_ROOT; ?>/logout" class="waves-effect waves-block">
+            <i class="material-icons">input</i>
+            <span style="position: relative;top: -7px;left: 7px;">Sair do sistema</span>
+        </a>
+    </div>
+</div>
+
+

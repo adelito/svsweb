@@ -1,0 +1,39 @@
+<?php
+$menu0 = "";
+$menu = "";
+$submenu = "";
+
+$params = explode('/', $this->getUri());
+
+if (!empty($params)) {
+    $menu = $params[1];
+    $submenu = isset($params[2]) ? $params[2] : "inicio";
+    $submenu2 = isset($params[3]) ? $params[3] : "";
+}
+
+
+        
+
+function activeMenu($menuAtual, $menu) {
+
+    if ($menuAtual == $menu) {
+        echo ' active ';
+    }
+}
+
+function toggledMenu($arrayMenus, $menu) {
+
+    if (in_array($menu,$arrayMenus)) {
+        echo ' toggled ';
+    }
+}
+
+function activeSubmenu($submenuAtual, $submenu) {
+
+    if ($submenuAtual == $submenu) {
+        echo ' class="active"';
+    }
+}
+?>
+
+<?php include "module/sistema/view/layout/4-1-navbar-options.phtml"; ?>
