@@ -340,6 +340,7 @@ abstract class AbstractController {
      * @return void
      */
     final public function returnDefaultSuccessJson($message, $goToAfterResult = "", $noRenderizeView = TRUE) {
+        // var_dump($goToAfterResult);die;
         is_array($message) ? $message = $message['retornoMensagem'] : null;
         empty($goToAfterResult) ? $url = "" : $url = SystemConfig::SYSTEM_ROOT . "/" . $goToAfterResult;
         echo json_encode(array('component' => 'returnDefaultSuccessJson', 'erro' => 0, 'modal' => array('type' => 'success', 'message' => $message, 'icon' => '<i class="glyphicon glyphicon-check"></i>', 'title' => 'Sucesso!', 'urlRedirect' => $url, 'buttonColor' => '#37a53b')));

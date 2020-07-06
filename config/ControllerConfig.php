@@ -20,8 +20,9 @@ use module\sistema\controller\logout\LogoutController;
 use module\sistema\controller\RecuperarSenha\RecuperarSenhaController;
 
 # controladores do módulo sgo #
-use module\framework\controller\FuncionarioController;
-use module\framework\controller\inicioController;
+// use module\SGTVES\controller\FuncionarioController;
+use module\SGTVES\controller\InicioController;
+use module\SGTVES\controller\NovoRecebimentoController;
 
 class ControllerConfig extends ControllerCoreConfig
 {
@@ -66,8 +67,8 @@ class ControllerConfig extends ControllerCoreConfig
             case 'inicio':
                 return new InicioController();
                 break;
-            case 'funcionario':
-                return new funcionarioController();
+            case 'novoRecebimento':
+                return new NovoRecebimentoController();
                 break;
             
         }
@@ -89,24 +90,24 @@ class ControllerConfig extends ControllerCoreConfig
             die;
         }
 
-        $controlePermissao = new PermissaoAcessoHelper();
-        $controller = self::tratarNomeControle($controller);
-        $arrayPermissoes = SessionHelper::getSessionValue('segPermissoes');
-        $arrayPerfis = SessionHelper::getSessionValue('segPerfis');
+        // $controlePermissao = new PermissaoAcessoHelper();
+        // $controller = self::tratarNomeControle($controller);
+        // $arrayPermissoes = SessionHelper::getSessionValue('segPermissoes');
+        // $arrayPerfis = SessionHelper::getSessionValue('segPerfis');
 
         // Controle Permissão Simplificado.
         // FAZER::adicionar IN e criar um item no congif com array contendo controles publicos
 
-        $array_controller = array(
-            'login',
-            'logout',
-            'recuperarsenha',
-            'cadastro',
-            'perfil',
-            'selecionarexercicio',
-            'reiniciarsessao',
-            'rotina'
-        );
+        // $array_controller = array(
+        //     'login',
+        //     'logout',
+        //     'recuperarsenha',
+        //     'cadastro',
+        //     'perfil',
+        //     'selecionarexercicio',
+        //     'reiniciarsessao',
+        //     'rotina'
+        // );
         // if (!in_array($controller, $array_controller)) {
         //     // if (empty(SessionHelper::getSessionValue('segPerfil'))) {
         //     //     header("location:/perfil/selecaoPerfil");

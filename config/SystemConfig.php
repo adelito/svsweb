@@ -26,9 +26,9 @@ class SystemConfig extends SystemCoreConfig
     );
    
     const SYSTEM_ROOT = "";
-    const SYSTEM_NAME = "FRAMEWORK";
-    const SYSTEM_NAME_FORMATED = '<i class="col-blue">V&S </i><b>SGO</b>';
-    const SYSTEM_DESCRICAO = 'Sistema de Gestão de Logistica';
+    const SYSTEM_NAME = "VIVALDO & SOUZA";
+    const SYSTEM_NAME_FORMATED = 'V<i style="color:red ">& </i>S';
+    const SYSTEM_DESCRICAO = 'Transporte e Logistica';
     const FRAMEWORK_USE_CONFIG = TRUE;
 
     # AUTENTICAÇÃO
@@ -57,40 +57,40 @@ class SystemConfig extends SystemCoreConfig
     # O CAMINHO DE UPLOAD_DIRSERVER È ABSOLUTO e é usado pela aplicação /home/siapp/public_html;
     //    const UPLOAD_DIR_SEVER = __DIR__ . '/../public/siapp/arquivos/';
 
-    public static function UPLOAD_DIR()
-    {
-        $uploadDir = '';
+    // public static function UPLOAD_DIR()
+    // {
+    //     $uploadDir = '';
 
-        switch (getenv('APP_ENV')) {
-            case 'development':
-                $uploadDir = '/public/agil/arquivos/';
-                break;
-            case 'staging':
-                $uploadDir = '/dados/upload/agil/';
-                break;
-            case 'production':
-                $uploadDir = '/dados/upload/agil/';
-                break;
-        }
+    //     switch (getenv('APP_ENV')) {
+    //         case 'development':
+    //             $uploadDir = '/public/agil/arquivos/';
+    //             break;
+    //         case 'staging':
+    //             $uploadDir = '/dados/upload/agil/';
+    //             break;
+    //         case 'production':
+    //             $uploadDir = '/dados/upload/agil/';
+    //             break;
+    //     }
 
-        return $uploadDir;
-    }
+    //     return $uploadDir;
+    // }
 
-    public static function UPLOAD_DIR_SERVER()
-    {
-        $uploadDir = '';
+    // public static function UPLOAD_DIR_SERVER()
+    // {
+    //     $uploadDir = '';
 
-        switch (getenv('APP_ENV')) {
-            case 'development':
-                $uploadDir = __DIR__ . '/../public/agil/arquivos/';
-                break;
-            case 'staging':
-                $uploadDir = '/dados/upload/agil/';
-                break;
-            case 'production':
-                $uploadDir = '/dados/upload/agil/';
-                break;
-        }
-        return $uploadDir;
-    }
+    //     switch (getenv('APP_ENV')) {
+    //         case 'development':
+    //             $uploadDir = __DIR__ . '/../public/agil/arquivos/';
+    //             break;
+    //         case 'staging':
+    //             $uploadDir = '/dados/upload/agil/';
+    //             break;
+    //         case 'production':
+    //             $uploadDir = '/dados/upload/agil/';
+    //             break;
+    //     }
+    //     return $uploadDir;
+    // }
 }

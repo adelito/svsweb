@@ -1,0 +1,139 @@
+<?php
+
+use config\SystemConfig;
+use core\helper\FormatHelper;
+use module\almoxarifado\consts\TipoUsuarioConsts;
+?>
+
+<section class="content pg-adicionar form">
+    <div class="container-fluid">
+        <div class="block-header">
+            <h2>
+                <?php echo $pageTitle; ?>
+            </h2>
+        </div>
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="body">
+                        <!-- filtros -->
+                        <h4> Campos de Filtros</h4>
+                        <!-- CONTEUDO -->
+                        <form role="form" action="" name="frmFiltrarFuncionario" id="frmFiltrarFuncionario" method="post">
+
+                            <div class="row">
+                                <div class="col-md-8  col-sm-12 col-xs-12">
+                                    <div class="row">
+                                        <div class="col-md-6  col-sm-6 col-xs-12">
+                                            <label for="NOME">Nome do Funcionário</label>
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input  type="text" name="NOME" class="form-control" id="NOME"  maxlength="100">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3  col-sm-6 col-xs-12">
+                                            <label for="MATRICULA">Matrícula:</label>
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input  type="text" name="MATRICULA" class="form-control" id="MATRICULA"  maxlength="5">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3  col-sm-6 col-xs-12">
+                                            <label for="CPF">CPF</label>
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input  type="text" name="CPF" class="form-control" id="CPF"  maxlength="11">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class=""> 
+                                    <button  type="submit" class=" col-white btn list-unstyled  palette-Blue-800 bg waves-effect border-radius-5 btn-salvar">
+                                        <i class="material-icons">search</i>
+                                        <span class="m-r-10">Pesquisar</span>
+                                    </button>
+                                    <button  type="button"  class="btn bg-orange waves-effect border-radius-5" form-reset>
+                                        <i class="material-icons">rotate_left</i>
+                                        <span class="m-r-10">Limpar Filtro</span>
+                                    </button>
+
+                                </div>
+                            </div>
+                        </form>
+                        <!-- exit filtros -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <a  href="<?php echo $systemConfig::SYSTEM_ROOT ?>/funcionario/adicionar" class="btn bg-green waves-effect border-radius-5">
+                            <i class="material-icons">add</i>
+                            <span class="m-r-10">Adicionar</span>
+                        </a>                     
+                    </div>
+
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover dataTable js-exportable" >
+                                <thead>
+                                    <tr>
+                                        <th class="actions">Ação</th>
+                                        <th>Nome</th>
+                                        <th>Matrícula</th>
+                                        <th>Setor</th>
+                                        <th>CPF</th>
+                                        <th>Telefone</th>
+                                        <th>Celular</th>
+                                        <th>Tipo de Usuário</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>    
+                                    <?php foreach ($arrayFuncionario as $funcionario) { ?>
+                                        <tr id="tr<?php echo $funcionario->getId(); ?>">
+                                            <td class="align-center"  >
+                                                <div class="btn-group tableAction">
+                                                    <button type="button" class="btn btn-default waves-effect dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i class="material-icons">keyboard_arrow_down</i>
+                                                    </button>
+                                                    <ul class="dropdown-menu ">
+                                                        <li>
+                                                            <a href="<?php echo $systemConfig::SYSTEM_ROOT ?>/funcionario/alterar/<?php echo $funcionario->getId(); ?>" ><i class="material-icons bg-orange padding-5 ">create</i>&nbsp;Alterar</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="<?php echo $systemConfig::SYSTEM_ROOT ?>/funcionario/excluir/<?php echo $funcionario->getId(); ?>" target-id="<?php echo $funcionario->getId(); ?>" class="alert-confirm-excluir"><i class="material-icons bg-red padding-5 ">delete_forever</i>&nbsp;Excluir</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>     
+                                            </td>
+                                            <td><?php echo $funcionario->getNome() ?></td>
+                                            <td><?php echo $funcionario->getMatricula() ?></td>
+                                            <td><?php echo $funcionario->getIdSetor()->getNome() ?></td>
+                                            <td><?php echo FormatHelper::Cpf($funcionario->getCpf()) ?></td>
+                                            <td><?php echo FormatHelper::telefoneFixo($funcionario->getTelefone()) ?></td>
+                                            <td><?php echo FormatHelper::celular($funcionario->getCelular()) ?></td>
+                                            <td><?php echo TipoUsuarioConsts::getValue($funcionario->getTipoUsuario()); ?></td>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

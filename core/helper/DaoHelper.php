@@ -126,7 +126,7 @@ class DaoHelper {
 
     public function parse($sql) {
         
-        $this->setStmt(pg_query($this->getConexao(), $sql));
+        $this->setStmt(mysql_query($this->getConexao(), $sql));
                 
     }
 

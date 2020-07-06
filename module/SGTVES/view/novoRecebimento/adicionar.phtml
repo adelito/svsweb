@@ -1,0 +1,109 @@
+<?php
+
+use module\SGTVES\consts\PerfilConsts;
+use module\SGTVES\consts\StatusConsts;
+?>
+<style type="text/css">
+[disabled] {
+    cursor: no-drop !important;
+}
+</style>
+
+<!-- Conteúdo -->
+<section class="content pg-adicionar">
+    <div class="container-fluid">
+        <div class="block-header">
+            <h2>
+                <?php echo $pageTitle; ?>
+            </h2>
+        </div>
+        <div class="row clearfix">
+            <!-- #INICIO teste -->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="body clearfix">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <!-- CONTEUDO -->
+                            <form role="form" action="adicionar" name="frmAdicionar" id="frmAdicionar" method="post">
+
+                                <div class="row">
+                                    <div class="col-md-6  col-sm-4 col-xs-12">
+                                        <label for="cliente">Cliente:</label>
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" name="cliente" class="form-control" id="cliente"
+                                                    maxlength="100">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6  col-sm-4 col-xs-12">
+                                        <label for="veiculo">Veículo:</label>
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" name="veiculo" class="form-control" id="veiculo"
+                                                    maxlength="100">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6  col-sm-4 col-xs-12">
+                                        <label for="dataSaida">Data Saída:</label>
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" name="dataSaida" class="form-control" id="dataSaida"
+                                                    maxlength="100">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6  col-sm-4 col-xs-12">
+                                        <label for="descricao">Descrição:</label>
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" name="descricao" class="form-control" id="descricao"
+                                                    maxlength="100">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12  col-sm-4 col-xs-12">
+                                        <label for="observacao">Observação:</label>
+                                        <div class="form-group">
+                                            <textarea type="text" data-valida id="observacao" name="observacao"
+                                                class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="">
+                                        <a class="btn bg-green waves-effect border-radius-5 btn-salvar" form-submit>
+                                            <i class="material-icons">save</i>
+                                            <span class="m-r-10">Salvar</span>
+                                        </a>
+                                        <a href="<?php echo $systemConfig::SYSTEM_ROOT ?>/novoRecebimento/inicio"
+                                            class="btn bg-orange waves-effect border-radius-5">
+                                            <i class="material-icons">reply</i>
+                                            <span class="m-r-10">Voltar</span>
+                                        </a>
+                                    </div>
+                                </div>
+                        </div>
+
+
+                        </form>
+                        <!--CONTEUDO-->
+                    </div><!-- col-md-6 -->
+                </div><!-- body -->
+            </div>
+        </div>
+        <!-- #FIM teste -->
+    </div>
+</section>
+<!-- #FIM Conteúdo -->

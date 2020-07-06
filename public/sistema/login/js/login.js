@@ -15,7 +15,7 @@ jQuery(document).ready(function() {
       .trigger("change");
   };
 
-  $("#usuario").mask("999.999.999-99");
+  // $("#usuario").mask("999.999.999-99");
 
   $("#frmLogin")
     .bootstrapValidator({

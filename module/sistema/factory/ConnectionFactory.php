@@ -24,7 +24,7 @@ class ConnectionFactory extends CoreConnectionFactory {
         $db = strtoupper($db . "_" . SystemConfig::ENVIRONMENT);
 
         switch ($db) {
-            case "NOVOFRAMEWORK_DESENVOLVIMENTO":
+            case "TESTE_DESENVOLVIMENTO":
                 if (!isset(self::$instanciaFrameworkDesenvolvimento)) {
                     self::$instanciaFrameworkDesenvolvimento = DbFrameworkDesenvolvimentoImplementation::connect();
                 }

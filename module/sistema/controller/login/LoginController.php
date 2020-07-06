@@ -7,8 +7,8 @@ use core\view\View;
 use config\SystemConfig;
 use core\helper\SessionHelper;
 use core\helper\FormatHelper;
-use module\framework\bo\FuncionarioBO;
-use module\framework\vo\FuncionarioVO;
+use module\SGTVES\bo\UsuarioBO;
+use module\SGTVES\vo\UsuarioVO;
 
 class LoginController extends AbstractController {
 
@@ -27,35 +27,32 @@ class LoginController extends AbstractController {
                 SessionHelper::startSession();
                 //                SessionHelper::setSessionValue('captcha', TRUE);
                 
-                $objFuncionarioBO = new FuncionarioBO();
-                $objFuncionarioVO = new FuncionarioVO();
+                $objUsuarioBO = new UsuarioBO();
+                $objUsuarioVO = new UsuarioVO();
                 
-                $objFuncionarioVO->setCpf(FormatHelper::removeMask($this->getRequestPost('usuario')));
-                $objFuncionarioVO->setSenha($this->getRequestPost('senha'));
+                $objUsuarioVO->setUsers($this->getRequestPost('usuario'));
+                $objUsuarioVO->setPassword($this->getRequestPost('senha'));
                 //Verificar se o usuário e senha esta correto
-                if (true) {
+                if ($objUsuarioBO->autenticar($objUsuarioVO)['retornoOperacao']) {
 
-                    //Seleciona o usuário do banco local
-                    $retornoUser = $objFuncionarioBO->selecionarByCpf($objFuncionarioVO);
+                    // Seleciona o usuário do banco local
+                    $retornoUser = $objUsuarioBO->selecionarByUsers($objUsuarioVO);
                     if (!$retornoUser['retornoOperacao']) {
                         echo $this->returnDefaultFailJson(SystemConfig::SYSTEM_MSG['MSG12']);
                         exit();
                     }
-//                    var_dump($retornoUser); die;
-                    $user = new FuncionarioVO();
+                    $user = new UsuarioVO();
                     $user = $retornoUser['retornoOperacao'];
-//                    var_dump($user->getCelular());die;
                     /* INFORMACAO DO USUARIO */
-                    SessionHelper::setSessionValue('usuNome', $user->getNome());
-                    SessionHelper::setSessionValue('usuLogin', $user->getCpf());
+                    SessionHelper::setSessionValue('usuNome', $user->getUsers());
+                    SessionHelper::setSessionValue('usuTipoUsuario', $user->getNameUsers());
                     SessionHelper::setSessionValue('usuId', $user->getId());
 //                    /* SEGURANÇA */
 //                    
-                    SessionHelper::setSessionValue('segTipoUsuario', $user->getTipoUsuario());
-                    SessionHelper::setSessionValue('segPerfilDescricao', $user->getTipoUsuario());
-                    SessionHelper::setSessionValue('segPermissoes', array());
+                    // SessionHelper::setSessionValue('segTipoUsuario', $user->getTipoUsuario());
+                    // SessionHelper::setSessionValue('segPerfilDescricao', $user->getTipoUsuario());
+                    // SessionHelper::setSessionValue('segPermissoes', array());
                     SessionHelper::setSessionValue('segChaveFixa', md5(SystemConfig::CHAVE_APLICACAO));
-//                    var_dump($user->getTipoUsuario()); die;
 
                     /* INFORMAÇÕES DE ACESSO */
                     SessionHelper::setSessionValue('aceDataUltimoAcesso', date('Y-m-d'));
