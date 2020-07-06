@@ -28,11 +28,12 @@ use module\SGTVES\consts\StatusConsts;
 
                                 <div class="row">
                                     <div class="col-md-6  col-sm-4 col-xs-12">
-                                        <label for="cliente">Cliente:</label>
+                                    <label for="ID_CLIENTE" >Cliente:</label>
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" name="cliente" class="form-control" id="cliente"
-                                                    maxlength="100">
+                                                <select id="ID_CLIENTE" name="ID_CLIENTE"  class="selectpicker form-control select" data-live-search="true" style="display: none;">                                            
+                                                    <?php $this->makeOptions($arrayCliente, 'cnpj', 'nfantasia'); ?>
+                                                </select> 
                                             </div>
                                         </div>
                                     </div>
