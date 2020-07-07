@@ -27,7 +27,7 @@ class SystemConfig extends SystemCoreConfig
    
     const SYSTEM_ROOT = "";
     const SYSTEM_NAME = "VIVALDO & SOUZA";
-    const SYSTEM_NAME_FORMATED = 'V<i style="color:red ">& </i>S';
+    const SYSTEM_NAME_FORMATED = 'Vivaldo<i style="color:red ">& </i>Souza';
     const SYSTEM_DESCRICAO = 'Transporte e Logistica';
     const FRAMEWORK_USE_CONFIG = TRUE;
 

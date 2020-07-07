@@ -4,6 +4,9 @@ namespace module\SGTVES\controller;
 
 use core\controller\AbstractController;
 use core\view\View;
+use module\SGTVES\vo\ClienteVO;
+use module\SGTVES\bo\ClienteBO;
+
 
 
 class NovoRecebimentoController extends AbstractController {
@@ -52,51 +55,8 @@ class NovoRecebimentoController extends AbstractController {
         $view->pageTitle('Novo Recebimento');
 
 
-        if ($this->isPost()) {
-            try {
-                $session = $this->getSession();
-
-                $post = $this->getAllRequestPost();
-
-                # informações principais #
-                $objFuncionarioVO->bind($post);
-
-                # informações de cadastro #
-                $objFuncionarioVO->setUsuarioInclusao($session['usuNome']);
-                $objFuncionarioVO->setSenha('123456');
-                $objFuncionarioVO->setMatricula('MT'. SafeHelper::geraCodigo());
-                $objFuncionarioVO->setDataInclusao(date('d/m/Y H:i:s'));
-
-
-                # inserir #
-                $retornoFuncionario = $objFuncionarioBO->inserir($objFuncionarioVO);
-
-                echo $this->returnDefaultSuccessJson($retornoFuncionario, 'funcionario/inicio');
-            } catch (\Exception $ex) {
-                echo $this->returnDefaultFailJson($ex->getMessage());
-            }
-            $view->noRenderize();
-        }
-
-        // $retornoFuncionario = $objFuncionarioBO->listar($objFuncionarioVO);
-        // $view->setVariable('arrayFuncionario', $retornoFuncionario['retornoOperacao']);
-
-        // $retornoSetor = $objSetorBO->listarCombo($objSetorVO);
-        // $view->setVariable('arraySetor', $retornoSetor);
-
-        $view->renderize();
-    }
-
-
-
-    public function upload() {
-
-        $session = $this->getSession();
-
-        $view = new View('novoRecebimento/adicionar', parent::pathToController());
-        $view->breadcrumb('fa-calendar', array('Administrativo', 'Funcionário', 'Adicionar Funcionário'));
-        $view->pageTitle('Cadastro de Funcionário');
-        $view->setScripts(array('framework/funcionario/js/funcionario.js'));
+        $objClienteVO = new ClienteVO();
+        $objClienteBO = new ClienteBO();
 
 
         if ($this->isPost()) {
@@ -125,53 +85,8 @@ class NovoRecebimentoController extends AbstractController {
             $view->noRenderize();
         }
 
-        // $retornoFuncionario = $objFuncionarioBO->listar($objFuncionarioVO);
-        // $view->setVariable('arrayFuncionario', $retornoFuncionario['retornoOperacao']);
-
-        // $retornoSetor = $objSetorBO->listarCombo($objSetorVO);
-        // $view->setVariable('arraySetor', $retornoSetor);
-
-        $view->renderize();
-    }
-
-    public function importacao() {
-
-        $session = $this->getSession();
-
-        $view = new View('novoRecebimento/adicionar', parent::pathToController());
-        $view->breadcrumb('fa-calendar', array('Administrativo', 'Funcionário', 'Adicionar Funcionário'));
-        $view->pageTitle('Cadastro de Funcionário');
-        $view->setScripts(array('framework/funcionario/js/funcionario.js'));
-
-
-        if ($this->isPost()) {
-            try {
-                $session = $this->getSession();
-
-                $post = $this->getAllRequestPost();
-
-                # informações principais #
-                $objFuncionarioVO->bind($post);
-
-                # informações de cadastro #
-                $objFuncionarioVO->setUsuarioInclusao($session['usuNome']);
-                $objFuncionarioVO->setSenha('123456');
-                $objFuncionarioVO->setMatricula('MT'. SafeHelper::geraCodigo());
-                $objFuncionarioVO->setDataInclusao(date('d/m/Y H:i:s'));
-
-
-                # inserir #
-                $retornoFuncionario = $objFuncionarioBO->inserir($objFuncionarioVO);
-
-                echo $this->returnDefaultSuccessJson($retornoFuncionario, 'funcionario/inicio');
-            } catch (\Exception $ex) {
-                echo $this->returnDefaultFailJson($ex->getMessage());
-            }
-            $view->noRenderize();
-        }
-
-        // $retornoFuncionario = $objFuncionarioBO->listar($objFuncionarioVO);
-        // $view->setVariable('arrayFuncionario', $retornoFuncionario['retornoOperacao']);
+         $retornoCliente = $objClienteBO->listar($objClienteVO);
+         $view->setVariable('arrayCliente', $retornoCliente['retornoOperacao']);
 
         // $retornoSetor = $objSetorBO->listarCombo($objSetorVO);
         // $view->setVariable('arraySetor', $retornoSetor);

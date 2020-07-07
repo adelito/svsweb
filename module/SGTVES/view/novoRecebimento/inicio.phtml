@@ -14,11 +14,11 @@ use core\helper\FormatHelper;
         </div>
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="card">
+                <!--<div class="card">
                     <div class="body">
-                        <!-- filtros -->
+                        
                         <h4> Campos de Filtros</h4>
-                        <!-- CONTEUDO -->
+                        
                         <form role="form" action="" name="frmFiltrarrecebimento" id="frmFiltrarrecebimento" method="post">
 
                             <div class="row">
@@ -68,9 +68,9 @@ use core\helper\FormatHelper;
                                 </div>
                             </div>
                         </form>
-                        <!-- exit filtros -->
+                        
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
 
@@ -81,7 +81,7 @@ use core\helper\FormatHelper;
                     <div class="header">
                         <a  href="<?php echo $systemConfig::SYSTEM_ROOT ?>/novoRecebimento/adicionar" class="btn bg-green waves-effect border-radius-5">
                             <i class="material-icons">add</i>
-                            <span class="m-r-10">Adicionar</span>
+                            <span class="m-r-10">Novo Recebimento</span>
                         </a>                     
                     </div>
 
@@ -91,11 +91,15 @@ use core\helper\FormatHelper;
                                 <thead>
                                     <tr>
                                         <th class="actions">Ação</th>
+                                        <th>Código</th>
                                         <th>Cliente</th>
-                                        <th>Veiculo</th>
+                                        <th>Veículo</th>
                                         <th>Data Saída</th>
                                         <th>Descrição</th>
-                                        <th>Observação</th>
+                                        <th>Status</th>
+                                        <th>Peso Bruto Total</th>
+                                        <th>Peso Liquido Total</th>
+                                        <th>Total NF(R$)</th>
                                     </tr>
                                 </thead>
 

@@ -4,9 +4,9 @@ use module\SGTVES\consts\PerfilConsts;
 use module\SGTVES\consts\StatusConsts;
 ?>
 <style type="text/css">
-[disabled] {
-    cursor: no-drop !important;
-}
+    [disabled] {
+        cursor: no-drop !important;
+    }
 </style>
 
 <!-- Conteúdo -->
@@ -28,12 +28,12 @@ use module\SGTVES\consts\StatusConsts;
 
                                 <div class="row">
                                     <div class="col-md-6  col-sm-4 col-xs-12">
-                                    <label for="ID_CLIENTE" >Cliente:</label>
+                                        <label for="ID_CLIENTE" >Cliente:</label>
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <select id="ID_CLIENTE" name="ID_CLIENTE"  class="selectpicker form-control select" data-live-search="true" style="display: none;">                                            
+                                                <select id="ID_CLIENTE" name="ID_CLIENTE"  class="selectpicker form-control select" data-live-search="true" style="display: none;">
                                                     <?php $this->makeOptions($arrayCliente, 'cnpj', 'nfantasia'); ?>
-                                                </select> 
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -43,7 +43,7 @@ use module\SGTVES\consts\StatusConsts;
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <input type="text" name="veiculo" class="form-control" id="veiculo"
-                                                    maxlength="100">
+                                                       maxlength="100">
                                             </div>
                                         </div>
                                     </div>
@@ -55,7 +55,7 @@ use module\SGTVES\consts\StatusConsts;
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <input type="text" name="dataSaida" class="form-control" id="dataSaida"
-                                                    maxlength="100">
+                                                       maxlength="100">
                                             </div>
                                         </div>
                                     </div>
@@ -65,7 +65,7 @@ use module\SGTVES\consts\StatusConsts;
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <input type="text" name="descricao" class="form-control" id="descricao"
-                                                    maxlength="100">
+                                                       maxlength="100">
                                             </div>
                                         </div>
                                     </div>
@@ -76,7 +76,7 @@ use module\SGTVES\consts\StatusConsts;
                                         <label for="observacao">Observação:</label>
                                         <div class="form-group">
                                             <textarea type="text" data-valida id="observacao" name="observacao"
-                                                class="form-control"></textarea>
+                                                      class="form-control"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -89,7 +89,7 @@ use module\SGTVES\consts\StatusConsts;
                                             <span class="m-r-10">Salvar</span>
                                         </a>
                                         <a href="<?php echo $systemConfig::SYSTEM_ROOT ?>/novoRecebimento/inicio"
-                                            class="btn bg-orange waves-effect border-radius-5">
+                                           class="btn bg-orange waves-effect border-radius-5">
                                             <i class="material-icons">reply</i>
                                             <span class="m-r-10">Voltar</span>
                                         </a>
