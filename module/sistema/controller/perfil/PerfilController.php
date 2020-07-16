@@ -153,7 +153,7 @@ class PerfilController extends AbstractController
         $view->renderize();
     }
 
-    public function uploadImage()
+    public function upload()
     {
 
         $file = $this->getRequestFile('fotoperfil');

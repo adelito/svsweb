@@ -4,26 +4,26 @@ namespace module\SGTVES\bo;
 
 use config\SystemConfig;
 use core\helper\BoHelper;
-use module\SGTVES\vo\ClienteVO;
-use module\SGTVES\dao\ClienteDAO;
+use module\SGTVES\vo\UploadVO;
+use module\SGTVES\dao\UploadDAO;
 
-# Classe de negócio referente a >Cliente< #
+# Classe de negócio referente a >Upload< #
 
-class ClienteBO {
+class UploadBO {
 
     /**
      * Método que realiza a listagem
-     * @param ClienteVO $objClienteVO
+     * @param UploadVO $objUploadVO
      * @return ArrayObject
      */
-    public function listar(ClienteVO $objClienteVO) {
+    public function Upload(Upload $objUploadVO) {
         # Instanciando classe de apoio da camada #
         $objBoHelper = new BoHelper();
 
         # Realizando Procedimentos #
         try {
-            $objClienteDAO = new ClienteDAO();
-            $objBoHelper->setRetorno($objClienteDAO->listar($objClienteVO));
+            $objUploadDAO = new UploadDAO();
+            $objBoHelper->setRetorno($objUploadDAO->Upload($objUploadVO));
         } catch (\Exception $ex) {
             echo $ex->getMessage();
             throw new \Exception("Não foi possível realizar a operação.");

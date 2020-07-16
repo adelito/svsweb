@@ -13,6 +13,12 @@ class NovoRecebimentoVO extends AbstractVO {
     private $descricao;
     private $observacao;
 
+    //TRANSIENTE
+    private $pesoLiquido;
+    private $pesoBruto;
+    private $totalNfe;
+    private $status;
+
     public function __construct() {
         parent::__construct();
         // $this->idSetor = new SetorVO();
@@ -114,22 +120,81 @@ class NovoRecebimentoVO extends AbstractVO {
         $this->observacao = $observacao;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getPesoLiquido()
+    {
+        return $this->pesoLiquido;
+    }
+
+    /**
+     * @param mixed $pesoLiquido
+     */
+    public function setPesoLiquido($pesoLiquido)
+    {
+        $this->pesoLiquido = $pesoLiquido;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPesoBruto()
+    {
+        return $this->pesoBruto;
+    }
+
+    /**
+     * @param mixed $pesoBruto
+     */
+    public function setPesoBruto($pesoBruto)
+    {
+        $this->pesoBruto = $pesoBruto;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTotalNfe()
+    {
+        return $this->totalNfe;
+    }
+
+    /**
+     * @param mixed $totalNfe
+     */
+    public function setTotalNfe($totalNfe)
+    {
+        $this->totalNfe = $totalNfe;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param mixed $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
 
 
     
     public function bind($array, $prefixo = "") {
-        !empty($array["{$prefixo}CODRECEBIMENTO"]) ? $this->setId(trim($array["{$prefixo}CODRECEBIMENTO"])) : null;
-        !empty($array["{$prefixo}CNPJCLIENTE"]) ? $this->setCnpjCliente(trim($array["{$prefixo}CNPJCLIENTE"])) : null;
-        !empty($array["{$prefixo}PLACA"]) ? $this->setPlaca(trim($array["{$prefixo}PLACA"])) : null;
-        !empty($array["{$prefixo}DTSAIDA"]) ? $this->setDataSaida(trim($array["{$prefixo}DTSAIDA"])) : null;
-        !empty($array["{$prefixo}DESCRICAO"]) ? $this->setDescricao(trim($array["{$prefixo}DESCRICAO"])) : null;
-        !empty($array["{$prefixo}OBSERVACAO"]) ? $this->setObservacao(trim($array["{$prefixo}OBSERVACAO"])) : null;
+        !empty($array["{$prefixo}codRecebimento"]) ? $this->setId(trim($array["{$prefixo}codRecebimento"])) : null;
+        !empty($array["{$prefixo}cnpjCliente"]) ? $this->setCnpjCliente(trim($array["{$prefixo}cnpjCliente"])) : null;
+        !empty($array["{$prefixo}placa"]) ? $this->setPlaca(trim($array["{$prefixo}placa"])) : null;
+        !empty($array["{$prefixo}dtSaida"]) ? $this->setDataSaida(trim($array["{$prefixo}dtSaida"])) : null;
+        !empty($array["{$prefixo}descricao"]) ? $this->setDescricao(trim($array["{$prefixo}descricao"])) : null;
+        !empty($array["{$prefixo}observacao"]) ? $this->setObservacao(trim($array["{$prefixo}observacao"])) : null;
 
-        !empty($array["{$prefixo}usuario_inclusao"]) ? $this->setUsuarioInclusao(trim($array["{$prefixo}usuario_inclusao"])) : null;
-        !empty($array["{$prefixo}usuario_alteracao"]) ? $this->setUsuarioAlteracao(trim($array["{$prefixo}usuario_alteracao"])) : null;
-        !empty($array["{$prefixo}data_inclusao"]) ? $this->setDataInclusao(trim($array["{$prefixo}data_inclusao"])) : null;
-        !empty($array["{$prefixo}data_alteracao"]) ? $this->setDataAlteracao(trim($array["{$prefixo}data_alteracao"])) : null;
-        !empty($array["{$prefixo}excluido"]) ? $this->setExcluido(trim($array["{$prefixo}excluido"])) : null;
     }
 
 }
