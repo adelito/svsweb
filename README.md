@@ -1,2 +1,0 @@
-# svsweb
-Sistema de Gestão

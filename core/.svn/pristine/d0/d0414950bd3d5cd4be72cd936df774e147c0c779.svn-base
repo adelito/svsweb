@@ -1,9 +1,0 @@
-<?php
-
-function __autoload($class_name) {
-
-    $url = dirname(__DIR__) . "\\" . $class_name . '.php';
-    require_once(str_replace("\\", '/', $url));
-}
-
-?>
